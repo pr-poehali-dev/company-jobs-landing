@@ -68,8 +68,8 @@ const Index = () => {
                 <p className="text-sm font-bold tracking-wide leading-none">
                   Карьера внутри компании
                 </p>
-                <p className="text-xs text-white/50 leading-none mt-0.5 font-mono">
-                  внутренний портал вакансий
+                <p className="text-xs text-white/50 leading-none mt-0.5 font-sans">
+                  вакансии компании
                 </p>
               </div>
             </div>
