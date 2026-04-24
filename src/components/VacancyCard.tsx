@@ -31,9 +31,8 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
       <div className="p-6 flex flex-col flex-1">
         <div className="flex flex-wrap gap-2 mb-4">
           {isNew && (
-            <span className="inline-flex items-center gap-1 bg-brand-green text-white text-xs font-semibold px-2.5 py-1 uppercase tracking-wider">
-              <Icon name="Sparkles" size={11} />
-              Новое
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white" title="Новая вакансия">
+              <Icon name="Sparkles" size={14} />
             </span>
           )}
           {vacancy.isInternal && (
@@ -79,7 +78,7 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
           </span>
           <button
             onClick={() => onOpen(vacancy.id)}
-            className="flex items-center gap-2 bg-brand-green-deep text-white text-sm font-medium px-4 py-2 hover:bg-brand-green transition-colors duration-150"
+            className="flex items-center gap-2 bg-brand-green-deep text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-brand-green transition-colors duration-150"
           >
             Подробнее
             <Icon name="ArrowRight" size={14} />
