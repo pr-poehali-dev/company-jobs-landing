@@ -87,7 +87,7 @@ const Index = () => {
 
       <div className="relative w-full h-28 overflow-hidden">
         <img
-          src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/ce0abb98-104f-4402-884c-246c4c408b91.png"
+          src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/b0490317-9fc8-499d-a3d5-66bac707157c.png"
           alt=""
           className="w-full h-full object-cover object-center"
         />
