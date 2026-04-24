@@ -91,6 +91,14 @@ const Index = () => {
         </div>
       </div>
 
+      <div className="w-full h-24 relative overflow-hidden">
+        <img
+          src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/ce0abb98-104f-4402-884c-246c4c408b91.png"
+          alt=""
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
       <main className="max-w-7xl mx-auto px-6 py-10">
         <VacancyFilters filters={filters} onChange={setFilters} total={filtered.length} />
 
