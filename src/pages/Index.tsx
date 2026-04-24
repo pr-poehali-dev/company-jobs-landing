@@ -87,9 +87,6 @@ const Index = () => {
 
       <div className="border-b border-brand-gray bg-white">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <p className="text-xs text-gray-400 font-sans font-semibold uppercase tracking-wider mb-1">
-            Открытые позиции
-          </p>
           <h1 className="text-2xl font-bold text-brand-green-deep">Вакансии компании</h1>
         </div>
       </div>
