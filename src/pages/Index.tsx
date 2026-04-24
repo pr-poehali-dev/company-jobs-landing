@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
-import { vacancies } from "@/data/vacancies";
+import { vacancies, Vacancy } from "@/data/vacancies";
 import VacancyCard from "@/components/VacancyCard";
 import VacancyFilters, { Filters } from "@/components/VacancyFilters";
-import VacancyDetail from "@/components/VacancyDetail";
+import VacancyDrawer from "@/components/VacancyDrawer";
 import Icon from "@/components/ui/icon";
 
 const defaultFilters: Filters = {
@@ -21,9 +21,7 @@ function daysSince(dateStr: string): number {
 
 const Index = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters);
-  const [openId, setOpenId] = useState<number | null>(null);
-
-  const openVacancy = vacancies.find((v) => v.id === openId) ?? null;
+  const [openVacancy, setOpenVacancy] = useState<Vacancy | null>(null);
 
   const filtered = useMemo(() => {
     let list = [...vacancies];
@@ -52,6 +50,11 @@ const Index = () => {
 
   const newCount = vacancies.filter((v) => daysSince(v.addedDate) <= 7).length;
 
+  const handleOpen = (id: number) => {
+    const found = vacancies.find((v) => v.id === id) ?? null;
+    setOpenVacancy(found);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       <header className="bg-brand-green-deep text-white">
@@ -62,7 +65,7 @@ const Index = () => {
                 <Icon name="Briefcase" size={16} className="text-white" />
               </div>
               <div>
-                <p className="text-sm font-semibold tracking-wide leading-none">
+                <p className="text-sm font-bold tracking-wide leading-none">
                   Карьера внутри компании
                 </p>
                 <p className="text-xs text-white/50 leading-none mt-0.5 font-mono">
@@ -73,7 +76,7 @@ const Index = () => {
             {newCount > 0 && (
               <div className="flex items-center gap-2 bg-brand-green/20 border border-brand-green/40 px-3 py-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
-                <span className="text-xs font-medium text-brand-green">
+                <span className="text-xs font-bold text-brand-green">
                   {newCount} {newCount === 1 ? "новая вакансия" : "новые вакансии"}
                 </span>
               </div>
@@ -84,57 +87,40 @@ const Index = () => {
 
       <div className="border-b border-brand-gray bg-white">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          {openVacancy ? (
-            <div>
-              <p className="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">
-                Вакансия
-              </p>
-              <h1 className="text-xl font-bold text-brand-green-deep">{openVacancy.title}</h1>
-            </div>
-          ) : (
-            <div>
-              <p className="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">
-                Открытые позиции
-              </p>
-              <h1 className="text-2xl font-bold text-brand-green-deep">Вакансии компании</h1>
-            </div>
-          )}
+          <p className="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">
+            Открытые позиции
+          </p>
+          <h1 className="text-2xl font-bold text-brand-green-deep">Вакансии компании</h1>
         </div>
       </div>
 
       <main className="max-w-7xl mx-auto px-6 py-10">
-        {openVacancy ? (
-          <VacancyDetail vacancy={openVacancy} onBack={() => setOpenId(null)} />
-        ) : (
-          <>
-            <VacancyFilters filters={filters} onChange={setFilters} total={filtered.length} />
+        <VacancyFilters filters={filters} onChange={setFilters} total={filtered.length} />
 
-            {filtered.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
-                  <Icon name="SearchX" size={24} className="text-gray-400" />
-                </div>
-                <p className="text-lg font-semibold text-brand-green-deep mb-2">
-                  Вакансий не найдено
-                </p>
-                <p className="text-sm text-gray-500 mb-5">
-                  Попробуйте изменить условия фильтрации
-                </p>
-                <button
-                  onClick={() => setFilters(defaultFilters)}
-                  className="text-sm text-brand-green hover:underline"
-                >
-                  Сбросить все фильтры
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {filtered.map((v) => (
-                  <VacancyCard key={v.id} vacancy={v} onOpen={setOpenId} />
-                ))}
-              </div>
-            )}
-          </>
+        {filtered.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
+              <Icon name="SearchX" size={24} className="text-gray-400" />
+            </div>
+            <p className="text-lg font-bold text-brand-green-deep mb-2">
+              Вакансий не найдено
+            </p>
+            <p className="text-sm text-gray-500 mb-5">
+              Попробуйте изменить условия фильтрации
+            </p>
+            <button
+              onClick={() => setFilters(defaultFilters)}
+              className="text-sm text-brand-green hover:underline font-semibold"
+            >
+              Сбросить все фильтры
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((v) => (
+              <VacancyCard key={v.id} vacancy={v} onOpen={handleOpen} />
+            ))}
+          </div>
         )}
       </main>
 
@@ -145,12 +131,14 @@ const Index = () => {
           </p>
           <p className="text-xs text-gray-400">
             По вопросам:{" "}
-            <a href="mailto:hr@company.ru" className="text-brand-green hover:underline">
+            <a href="mailto:hr@company.ru" className="text-brand-green hover:underline font-semibold">
               hr@company.ru
             </a>
           </p>
         </div>
       </footer>
+
+      <VacancyDrawer vacancy={openVacancy} onClose={() => setOpenVacancy(null)} />
     </div>
   );
 };
