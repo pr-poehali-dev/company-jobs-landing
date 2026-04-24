@@ -7,6 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+			"./1777027191793822930.html"
 	],
 	prefix: "",
 	theme: {
@@ -18,12 +19,23 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['IBM Plex Sans', 'sans-serif'],
+				mono: ['IBM Plex Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				brand: {
+					green: 'rgb(3,190,147)',
+					'green-dark': 'rgb(3,128,115)',
+					'green-deep': 'rgb(7,48,45)',
+					blue: 'rgb(0,120,190)',
+					gray: 'rgb(217,217,217)',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
