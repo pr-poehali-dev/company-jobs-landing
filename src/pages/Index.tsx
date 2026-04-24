@@ -85,18 +85,15 @@ const Index = () => {
         </div>
       </header>
 
-      <div className="border-b border-brand-gray bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <h1 className="text-2xl font-bold text-brand-green-deep">Вакансии компании</h1>
-        </div>
-      </div>
-
-      <div className="w-full h-24 relative overflow-hidden">
+      <div className="relative w-full h-28 overflow-hidden">
         <img
           src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/ce0abb98-104f-4402-884c-246c4c408b91.png"
           alt=""
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 flex items-center px-8 max-w-7xl mx-auto">
+          <h1 className="text-2xl font-bold text-white drop-shadow-sm">Вакансии компании</h1>
+        </div>
       </div>
 
       <main className="max-w-7xl mx-auto px-6 py-10">
