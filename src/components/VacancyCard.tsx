@@ -17,14 +17,7 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
   const isNew = days <= 7;
 
   return (
-    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg relative">
-      <span
-        className="absolute top-3 right-3 z-10 text-xs font-medium text-gray-600 px-2.5 py-1 rounded-full"
-        style={{ backgroundColor: "rgb(217,217,217)" }}
-      >
-        {vacancy.department}
-      </span>
-
+    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg">
       {vacancy.image && (
         <div className="h-44 overflow-hidden">
           <img
@@ -36,18 +29,24 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
       )}
 
       <div className="p-6 flex flex-col flex-1">
-        <div className="h-8 flex flex-wrap items-center gap-2 mb-4">
+        <div className="h-8 flex items-center gap-2 mb-4">
           {isNew && (
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white" title="Новая вакансия">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white shrink-0" title="Новая вакансия">
               <Icon name="Sparkles" size={14} />
             </span>
           )}
           {vacancy.isInternal && (
-            <span className="inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider shrink-0">
               <Icon name="Lock" size={11} />
               Только внутренний отбор
             </span>
           )}
+          <span
+            className="ml-auto text-xs font-medium text-gray-600 px-2.5 py-1 rounded-full shrink-0"
+            style={{ backgroundColor: "rgb(217,217,217)" }}
+          >
+            {vacancy.department}
+          </span>
         </div>
 
         <h3 className="text-[15px] font-semibold text-brand-green-deep leading-snug mb-3 group-hover:text-brand-green transition-colors">
