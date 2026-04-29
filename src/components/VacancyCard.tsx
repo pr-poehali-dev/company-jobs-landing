@@ -17,7 +17,14 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
   const isNew = days <= 7;
 
   return (
-    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg">
+    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg relative">
+      <span
+        className="absolute top-3 right-3 z-10 text-xs font-medium text-gray-600 px-2.5 py-1 rounded-full"
+        style={{ backgroundColor: "rgb(217,217,217)" }}
+      >
+        {vacancy.department}
+      </span>
+
       {vacancy.image && (
         <div className="h-44 overflow-hidden">
           <img
@@ -48,10 +55,6 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
         </h3>
 
         <div className="flex flex-col gap-1.5 mb-4">
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Icon name="Building2" size={13} />
-            <span>{vacancy.department}</span>
-          </div>
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Icon name="MapPin" size={13} />
             <span>{vacancy.location}</span>
