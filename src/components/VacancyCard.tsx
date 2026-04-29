@@ -36,21 +36,19 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
       )}
 
       <div className="p-6 flex flex-col flex-1">
-        {(isNew || vacancy.isInternal) && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {isNew && (
-              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white" title="Новая вакансия">
-                <Icon name="Sparkles" size={14} />
-              </span>
-            )}
-            {vacancy.isInternal && (
-              <span className="inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider">
-                <Icon name="Lock" size={11} />
-                Только внутренний отбор
-              </span>
-            )}
-          </div>
-        )}
+        <div className="h-8 flex flex-wrap items-center gap-2 mb-4">
+          {isNew && (
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white" title="Новая вакансия">
+              <Icon name="Sparkles" size={14} />
+            </span>
+          )}
+          {vacancy.isInternal && (
+            <span className="inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider">
+              <Icon name="Lock" size={11} />
+              Только внутренний отбор
+            </span>
+          )}
+        </div>
 
         <h3 className="text-[15px] font-semibold text-brand-green-deep leading-snug mb-3 group-hover:text-brand-green transition-colors">
           {vacancy.title}
