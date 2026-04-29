@@ -92,7 +92,7 @@ const Index = () => {
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 flex items-center px-8 max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-white drop-shadow-sm">Найди работу, которая вдохновляет</h1>
+          <h1 className="text-2xl font-bold text-white drop-shadow-sm">Найди работу, которая вдохновляет!</h1>
         </div>
       </div>
 
