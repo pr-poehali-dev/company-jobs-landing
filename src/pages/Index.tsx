@@ -21,7 +21,6 @@ const defaultVacancyFilters: Filters = {
 };
 
 const defaultProjectFilters: ProjectFilters = {
-  category: "Все",
   department: "Все",
   location: "Все",
   sortBy: "date_desc",
@@ -70,7 +69,6 @@ const Index = () => {
     let list = [...projects];
     if (!projectFilters.showArchived) list = list.filter((p) => !p.isArchived);
     else list = list.filter((p) => p.isArchived);
-    if (projectFilters.category !== "Все") list = list.filter((p) => p.category === projectFilters.category);
     if (projectFilters.department !== "Все") list = list.filter((p) => p.department === projectFilters.department);
     if (projectFilters.location !== "Все") list = list.filter((p) => p.location === projectFilters.location);
     if (projectFilters.experience !== "Не имеет значения") list = list.filter((p) => p.experience === projectFilters.experience);

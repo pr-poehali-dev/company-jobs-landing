@@ -1,5 +1,4 @@
 import {
-  PROJECT_CATEGORIES,
   PROJECT_LOCATIONS,
   PROJECT_DEPARTMENTS,
   PROJECT_EXPERIENCE_OPTIONS,
@@ -9,7 +8,6 @@ import {
 import Icon from "@/components/ui/icon";
 
 export type ProjectFilters = {
-  category: string;
   department: string;
   location: string;
   sortBy: "date_desc" | "date_asc";
@@ -33,7 +31,6 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
   const set = (patch: Partial<ProjectFilters>) => onChange({ ...filters, ...patch });
 
   const activeCount = [
-    filters.category !== "Все",
     filters.department !== "Все",
     filters.location !== "Все",
     filters.onlyNew,
@@ -44,7 +41,6 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
 
   const reset = () =>
     onChange({
-      category: "Все",
       department: "Все",
       location: "Все",
       sortBy: "date_desc",
@@ -58,13 +54,6 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
   return (
     <div className="bg-white border border-brand-gray p-5 mb-8">
       <div className="flex flex-wrap items-end gap-4">
-
-        <div className="flex flex-col gap-1 min-w-[160px]">
-          <label className={labelClass}>Категория</label>
-          <select value={filters.category} onChange={(e) => set({ category: e.target.value })} className={selectClass}>
-            {PROJECT_CATEGORIES.map((c) => <option key={c}>{c}</option>)}
-          </select>
-        </div>
 
         <div className="flex flex-col gap-1 min-w-[180px]">
           <label className={labelClass}>Департамент</label>
