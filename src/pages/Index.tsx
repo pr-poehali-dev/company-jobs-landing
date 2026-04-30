@@ -123,7 +123,7 @@ const Index = () => {
         <div className="flex border-b border-brand-gray mt-6">
           <button
             onClick={() => setActiveTab("vacancies")}
-            className="px-8 py-3.5 text-sm transition-colors border-b-2 -mb-px"
+            className="flex-1 py-3.5 text-sm transition-colors border-b-2 -mb-px"
             style={{
               fontFamily: "'Gilroy', sans-serif",
               fontWeight: activeTab === "vacancies" ? 700 : 400,
@@ -136,7 +136,7 @@ const Index = () => {
           </button>
           <button
             onClick={() => setActiveTab("projects")}
-            className="px-8 py-3.5 text-sm transition-colors border-b-2 -mb-px"
+            className="flex-1 py-3.5 text-sm transition-colors border-b-2 -mb-px"
             style={{
               fontFamily: "'Gilroy', sans-serif",
               fontWeight: activeTab === "projects" ? 700 : 400,
