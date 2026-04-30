@@ -30,9 +30,15 @@ export default function ProjectCard({ project, onOpen }: Props) {
 
       <div className="p-6 flex flex-col flex-1">
         <div className="h-8 flex items-center gap-2 mb-4">
-          {isNew && (
+          {isNew && !project.isArchived && (
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-green text-white shrink-0" title="Новый проект">
               <Icon name="Sparkles" size={14} />
+            </span>
+          )}
+          {project.isArchived && (
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full shrink-0">
+              <Icon name="Archive" size={11} />
+              В архиве
             </span>
           )}
           <span

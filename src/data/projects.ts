@@ -2,6 +2,7 @@ export type Project = {
   id: number;
   title: string;
   category: string;
+  department: string;
   location: string;
   addedDate: string;
   description: string;
@@ -10,19 +11,32 @@ export type Project = {
   contactEmail: string;
   image?: string;
   participants?: number;
+  experience: string;
+  workFormat: string;
+  duration: string;
+  isArchived: boolean;
 };
 
 export const PROJECT_CATEGORIES = ["Все", "Экология", "Спорт", "Образование", "Волонтёрство", "Культура"];
 export const PROJECT_LOCATIONS = ["Все", "Москва", "Санкт-Петербург", "Казань", "Удалённо", "Все регионы"];
+export const PROJECT_DEPARTMENTS = ["Все", "Финансы", "IT", "HR", "Маркетинг", "Операции", "Юридический", "Общекорпоративный"];
+export const PROJECT_EXPERIENCE_OPTIONS = ["Не имеет значения", "1-3 года", "3-5 лет", "Более 5 лет"];
+export const PROJECT_WORK_FORMAT_OPTIONS = ["Все", "На месте заказчика", "Гибридный", "Дистанционный", "Командировка"];
+export const PROJECT_DURATION_OPTIONS = ["Любая", "До 3 месяцев", "3-6 месяцев", "6-12 месяцев", "Более 12 месяцев"];
 
 export const projects: Project[] = [
   {
     id: 1,
     title: "Всероссийский субботник «Зелёная весна»",
     category: "Экология",
+    department: "Общекорпоративный",
     location: "Все регионы",
     addedDate: "2026-04-25",
     participants: 340,
+    experience: "Не имеет значения",
+    workFormat: "На месте заказчика",
+    duration: "До 3 месяцев",
+    isArchived: false,
     description: "Ежегодная экологическая акция компании: уборка территорий, высадка деревьев и кустарников вблизи офисов и производственных объектов по всей стране.",
     goals: [
       "Облагородить территории вокруг офисов компании",
@@ -36,9 +50,14 @@ export const projects: Project[] = [
     id: 2,
     title: "Корпоративный спорт: лига по мини-футболу",
     category: "Спорт",
+    department: "Общекорпоративный",
     location: "Москва",
     addedDate: "2026-04-22",
     participants: 112,
+    experience: "Не имеет значения",
+    workFormat: "На месте заказчика",
+    duration: "6-12 месяцев",
+    isArchived: false,
     description: "Внутренняя футбольная лига для сотрудников. Игры проходят каждую пятницу вечером на арендованных полях. Уровень: любители, главное — желание играть!",
     goals: [
       "Укрепить горизонтальные связи между командами",
@@ -52,9 +71,14 @@ export const projects: Project[] = [
     id: 3,
     title: "Менторская программа «Траектория»",
     category: "Образование",
+    department: "HR",
     location: "Удалённо",
     addedDate: "2026-04-18",
     participants: 58,
+    experience: "3-5 лет",
+    workFormat: "Дистанционный",
+    duration: "3-6 месяцев",
+    isArchived: false,
     description: "Программа парного менторства: опытные сотрудники делятся знаниями с коллегами, которые хотят развить новые компетенции или перейти в смежную функцию.",
     goals: [
       "Развить внутренний кадровый резерв",
@@ -68,9 +92,14 @@ export const projects: Project[] = [
     id: 4,
     title: "Волонтёрский марафон «Добрый день»",
     category: "Волонтёрство",
+    department: "Общекорпоративный",
     location: "Санкт-Петербург",
     addedDate: "2026-04-10",
     participants: 87,
+    experience: "Не имеет значения",
+    workFormat: "На месте заказчика",
+    duration: "До 3 месяцев",
+    isArchived: false,
     description: "Однодневный волонтёрский марафон: помощь детским домам, домам престарелых и приютам для животных в Санкт-Петербурге. Корпоративный выходной для участников.",
     goals: [
       "Организовать адресную помощь 5 социальным учреждениям",
@@ -84,9 +113,14 @@ export const projects: Project[] = [
     id: 5,
     title: "Клуб настольных игр",
     category: "Культура",
+    department: "Общекорпоративный",
     location: "Казань",
     addedDate: "2026-04-05",
     participants: 34,
+    experience: "Не имеет значения",
+    workFormat: "На месте заказчика",
+    duration: "Более 12 месяцев",
+    isArchived: false,
     description: "Еженедельные встречи любителей настольных игр в казанском офисе. Игротека насчитывает более 80 игр — от классики до современных стратегий.",
     goals: [
       "Создать комфортное пространство для неформального общения",
@@ -100,9 +134,14 @@ export const projects: Project[] = [
     id: 6,
     title: "Фотоклуб «Объектив»",
     category: "Культура",
+    department: "Общекорпоративный",
     location: "Москва",
     addedDate: "2026-03-20",
     participants: 29,
+    experience: "Не имеет значения",
+    workFormat: "На месте заказчика",
+    duration: "Более 12 месяцев",
+    isArchived: false,
     description: "Клуб для сотрудников, увлечённых фотографией. Совместные фотопрогулки, разборы работ, мастер-классы от профессионалов и ежегодная выставка в офисе.",
     goals: [
       "Проводить ежемесячные фотовыходы в интересные локации Москвы",
@@ -111,5 +150,47 @@ export const projects: Project[] = [
     ],
     howToJoin: "Вступите в корпоративный чат клуба или напишите на почту. Опыт и оборудование — не обязательны.",
     contactEmail: "photo@company.ru",
+  },
+  {
+    id: 7,
+    title: "Цифровая трансформация логистики",
+    category: "Образование",
+    department: "Операции",
+    location: "Москва",
+    addedDate: "2025-11-10",
+    participants: 15,
+    experience: "3-5 лет",
+    workFormat: "Гибридный",
+    duration: "6-12 месяцев",
+    isArchived: true,
+    description: "Проект по внедрению цифровых инструментов в цепочку поставок. Завершён в марте 2026 года — результаты превзошли плановые показатели на 18%.",
+    goals: [
+      "Автоматизировать 80% ручных операций в логистике",
+      "Снизить время обработки заказов на 30%",
+      "Внедрить систему мониторинга в реальном времени",
+    ],
+    howToJoin: "Проект завершён. Для участия в новых инициативах обратитесь в отдел операций.",
+    contactEmail: "operations@company.ru",
+  },
+  {
+    id: 8,
+    title: "Редизайн корпоративного портала",
+    category: "Культура",
+    department: "IT",
+    location: "Удалённо",
+    addedDate: "2025-09-01",
+    participants: 8,
+    experience: "1-3 года",
+    workFormat: "Дистанционный",
+    duration: "3-6 месяцев",
+    isArchived: true,
+    description: "Проект по обновлению дизайна и UX внутреннего портала компании. Завершён в декабре 2025 года, удовлетворённость сотрудников выросла с 3.2 до 4.6 из 5.",
+    goals: [
+      "Обновить визуальный стиль портала",
+      "Улучшить навигацию и доступность",
+      "Повысить скорость загрузки ключевых страниц",
+    ],
+    howToJoin: "Проект завершён. Если вы хотите участвовать в развитии портала, напишите в IT-отдел.",
+    contactEmail: "it-recruit@company.ru",
   },
 ];

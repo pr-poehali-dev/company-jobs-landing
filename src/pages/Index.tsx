@@ -15,13 +15,21 @@ const defaultVacancyFilters: Filters = {
   sortBy: "date_desc",
   onlyInternal: false,
   onlyNew: false,
+  experience: "Любой",
+  workFormat: "Любой",
+  employmentType: "Любой",
 };
 
 const defaultProjectFilters: ProjectFilters = {
   category: "Все",
+  department: "Все",
   location: "Все",
   sortBy: "date_desc",
   onlyNew: false,
+  experience: "Не имеет значения",
+  workFormat: "Все",
+  duration: "Любая",
+  showArchived: false,
 };
 
 function daysSince(dateStr: string): number {
@@ -45,6 +53,9 @@ const Index = () => {
     let list = [...vacancies];
     if (vacancyFilters.department !== "Все") list = list.filter((v) => v.department === vacancyFilters.department);
     if (vacancyFilters.location !== "Все") list = list.filter((v) => v.location === vacancyFilters.location);
+    if (vacancyFilters.experience !== "Любой") list = list.filter((v) => v.experience === vacancyFilters.experience);
+    if (vacancyFilters.workFormat !== "Любой") list = list.filter((v) => v.workFormat === vacancyFilters.workFormat);
+    if (vacancyFilters.employmentType !== "Любой") list = list.filter((v) => v.employmentType === vacancyFilters.employmentType);
     if (vacancyFilters.onlyNew) list = list.filter((v) => daysSince(v.addedDate) <= 7);
     if (vacancyFilters.onlyInternal) list = list.filter((v) => v.isInternal);
     list.sort((a, b) => {
@@ -57,8 +68,14 @@ const Index = () => {
 
   const filteredProjects = useMemo(() => {
     let list = [...projects];
+    if (!projectFilters.showArchived) list = list.filter((p) => !p.isArchived);
+    else list = list.filter((p) => p.isArchived);
     if (projectFilters.category !== "Все") list = list.filter((p) => p.category === projectFilters.category);
+    if (projectFilters.department !== "Все") list = list.filter((p) => p.department === projectFilters.department);
     if (projectFilters.location !== "Все") list = list.filter((p) => p.location === projectFilters.location);
+    if (projectFilters.experience !== "Не имеет значения") list = list.filter((p) => p.experience === projectFilters.experience);
+    if (projectFilters.workFormat !== "Все") list = list.filter((p) => p.workFormat === projectFilters.workFormat);
+    if (projectFilters.duration !== "Любая") list = list.filter((p) => p.duration === projectFilters.duration);
     if (projectFilters.onlyNew) list = list.filter((p) => daysSince(p.addedDate) <= 7);
     list.sort((a, b) => {
       const da = new Date(a.addedDate).getTime();
