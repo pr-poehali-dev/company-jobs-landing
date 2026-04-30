@@ -1,15 +1,26 @@
 import { useState, useMemo } from "react";
 import { vacancies, Vacancy } from "@/data/vacancies";
+import { projects, Project } from "@/data/projects";
 import VacancyCard from "@/components/VacancyCard";
 import VacancyFilters, { Filters } from "@/components/VacancyFilters";
 import VacancyDrawer from "@/components/VacancyDrawer";
+import ProjectCard from "@/components/ProjectCard";
+import ProjectFiltersPanel, { ProjectFilters } from "@/components/ProjectFilters";
+import ProjectDrawer from "@/components/ProjectDrawer";
 import Icon from "@/components/ui/icon";
 
-const defaultFilters: Filters = {
+const defaultVacancyFilters: Filters = {
   department: "Все",
   location: "Все",
   sortBy: "date_desc",
   onlyInternal: false,
+  onlyNew: false,
+};
+
+const defaultProjectFilters: ProjectFilters = {
+  category: "Все",
+  location: "Все",
+  sortBy: "date_desc",
   onlyNew: false,
 };
 
@@ -19,40 +30,52 @@ function daysSince(dateStr: string): number {
   return Math.floor((now.getTime() - added.getTime()) / (1000 * 60 * 60 * 24));
 }
 
+type Tab = "vacancies" | "projects";
+
 const Index = () => {
-  const [filters, setFilters] = useState<Filters>(defaultFilters);
+  const [activeTab, setActiveTab] = useState<Tab>("vacancies");
+
+  const [vacancyFilters, setVacancyFilters] = useState<Filters>(defaultVacancyFilters);
   const [openVacancy, setOpenVacancy] = useState<Vacancy | null>(null);
 
-  const filtered = useMemo(() => {
+  const [projectFilters, setProjectFilters] = useState<ProjectFilters>(defaultProjectFilters);
+  const [openProject, setOpenProject] = useState<Project | null>(null);
+
+  const filteredVacancies = useMemo(() => {
     let list = [...vacancies];
-
-    if (filters.department !== "Все") {
-      list = list.filter((v) => v.department === filters.department);
-    }
-    if (filters.location !== "Все") {
-      list = list.filter((v) => v.location === filters.location);
-    }
-    if (filters.onlyNew) {
-      list = list.filter((v) => daysSince(v.addedDate) <= 7);
-    }
-    if (filters.onlyInternal) {
-      list = list.filter((v) => v.isInternal);
-    }
-
+    if (vacancyFilters.department !== "Все") list = list.filter((v) => v.department === vacancyFilters.department);
+    if (vacancyFilters.location !== "Все") list = list.filter((v) => v.location === vacancyFilters.location);
+    if (vacancyFilters.onlyNew) list = list.filter((v) => daysSince(v.addedDate) <= 7);
+    if (vacancyFilters.onlyInternal) list = list.filter((v) => v.isInternal);
     list.sort((a, b) => {
       const da = new Date(a.addedDate).getTime();
       const db = new Date(b.addedDate).getTime();
-      return filters.sortBy === "date_desc" ? db - da : da - db;
+      return vacancyFilters.sortBy === "date_desc" ? db - da : da - db;
     });
-
     return list;
-  }, [filters]);
+  }, [vacancyFilters]);
 
-  const newCount = vacancies.filter((v) => daysSince(v.addedDate) <= 7).length;
+  const filteredProjects = useMemo(() => {
+    let list = [...projects];
+    if (projectFilters.category !== "Все") list = list.filter((p) => p.category === projectFilters.category);
+    if (projectFilters.location !== "Все") list = list.filter((p) => p.location === projectFilters.location);
+    if (projectFilters.onlyNew) list = list.filter((p) => daysSince(p.addedDate) <= 7);
+    list.sort((a, b) => {
+      const da = new Date(a.addedDate).getTime();
+      const db = new Date(b.addedDate).getTime();
+      return projectFilters.sortBy === "date_desc" ? db - da : da - db;
+    });
+    return list;
+  }, [projectFilters]);
 
-  const handleOpen = (id: number) => {
-    const found = vacancies.find((v) => v.id === id) ?? null;
-    setOpenVacancy(found);
+  const newVacanciesCount = vacancies.filter((v) => daysSince(v.addedDate) <= 7).length;
+
+  const handleOpenVacancy = (id: number) => {
+    setOpenVacancy(vacancies.find((v) => v.id === id) ?? null);
+  };
+
+  const handleOpenProject = (id: number) => {
+    setOpenProject(projects.find((p) => p.id === id) ?? null);
   };
 
   return (
@@ -73,11 +96,11 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            {newCount > 0 && (
+            {newVacanciesCount > 0 && (
               <div className="flex items-center gap-2 bg-brand-green/20 border border-brand-green/40 px-3 py-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
                 <span className="text-xs font-bold text-brand-green">
-                  {newCount} {newCount === 1 ? "новая вакансия" : "новые вакансии"}
+                  {newVacanciesCount} {newVacanciesCount === 1 ? "новая вакансия" : "новые вакансии"}
                 </span>
               </div>
             )}
@@ -96,33 +119,90 @@ const Index = () => {
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        <VacancyFilters filters={filters} onChange={setFilters} total={filtered.length} />
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex border-b border-brand-gray mt-6">
+          <button
+            onClick={() => setActiveTab("vacancies")}
+            className="px-8 py-3.5 text-sm transition-colors border-b-2 -mb-px"
+            style={{
+              fontFamily: "'Gilroy', sans-serif",
+              fontWeight: activeTab === "vacancies" ? 700 : 400,
+              backgroundColor: activeTab === "vacancies" ? "rgb(213,232,229)" : "transparent",
+              borderBottomColor: activeTab === "vacancies" ? "rgb(213,232,229)" : "transparent",
+              color: activeTab === "vacancies" ? "#1a3a2f" : "#6b7280",
+            }}
+          >
+            Вакансии компании
+          </button>
+          <button
+            onClick={() => setActiveTab("projects")}
+            className="px-8 py-3.5 text-sm transition-colors border-b-2 -mb-px"
+            style={{
+              fontFamily: "'Gilroy', sans-serif",
+              fontWeight: activeTab === "projects" ? 700 : 400,
+              backgroundColor: activeTab === "projects" ? "rgb(213,232,229)" : "transparent",
+              borderBottomColor: activeTab === "projects" ? "rgb(213,232,229)" : "transparent",
+              color: activeTab === "projects" ? "#1a3a2f" : "#6b7280",
+            }}
+          >
+            Маркетплейс проектов
+          </button>
+        </div>
+      </div>
 
-        {filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center">
-            <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
-              <Icon name="SearchX" size={24} className="text-gray-400" />
-            </div>
-            <p className="text-lg font-bold text-brand-green-deep mb-2">
-              Вакансий не найдено
-            </p>
-            <p className="text-sm text-gray-500 mb-5">
-              Попробуйте изменить условия фильтрации
-            </p>
-            <button
-              onClick={() => setFilters(defaultFilters)}
-              className="text-sm text-brand-green hover:underline font-semibold"
-            >
-              Сбросить все фильтры
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filtered.map((v) => (
-              <VacancyCard key={v.id} vacancy={v} onOpen={handleOpen} />
-            ))}
-          </div>
+      <main className="max-w-7xl mx-auto px-6 py-10">
+        {activeTab === "vacancies" && (
+          <>
+            <VacancyFilters filters={vacancyFilters} onChange={setVacancyFilters} total={filteredVacancies.length} />
+            {filteredVacancies.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
+                  <Icon name="SearchX" size={24} className="text-gray-400" />
+                </div>
+                <p className="text-lg font-bold text-brand-green-deep mb-2">Вакансий не найдено</p>
+                <p className="text-sm text-gray-500 mb-5">Попробуйте изменить условия фильтрации</p>
+                <button
+                  onClick={() => setVacancyFilters(defaultVacancyFilters)}
+                  className="text-sm text-brand-green hover:underline font-semibold"
+                >
+                  Сбросить все фильтры
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {filteredVacancies.map((v) => (
+                  <VacancyCard key={v.id} vacancy={v} onOpen={handleOpenVacancy} />
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {activeTab === "projects" && (
+          <>
+            <ProjectFiltersPanel filters={projectFilters} onChange={setProjectFilters} total={filteredProjects.length} />
+            {filteredProjects.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
+                  <Icon name="SearchX" size={24} className="text-gray-400" />
+                </div>
+                <p className="text-lg font-bold text-brand-green-deep mb-2">Проектов не найдено</p>
+                <p className="text-sm text-gray-500 mb-5">Попробуйте изменить условия фильтрации</p>
+                <button
+                  onClick={() => setProjectFilters(defaultProjectFilters)}
+                  className="text-sm text-brand-green hover:underline font-semibold"
+                >
+                  Сбросить все фильтры
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {filteredProjects.map((p) => (
+                  <ProjectCard key={p.id} project={p} onOpen={handleOpenProject} />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </main>
 
@@ -141,6 +221,7 @@ const Index = () => {
       </footer>
 
       <VacancyDrawer vacancy={openVacancy} onClose={() => setOpenVacancy(null)} />
+      <ProjectDrawer project={openProject} onClose={() => setOpenProject(null)} />
     </div>
   );
 };
