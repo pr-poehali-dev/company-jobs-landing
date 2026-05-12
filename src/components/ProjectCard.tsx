@@ -76,7 +76,10 @@ export default function ProjectCard({ project, onOpen }: Props) {
           </span>
           <button
             onClick={() => onOpen(project.id)}
-            className="flex items-center gap-2 bg-brand-green-deep text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-brand-green transition-colors duration-150"
+            className="flex items-center gap-2 bg-white text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-150"
+            style={{ borderColor: "rgb(3,128,115)", color: "rgb(3,128,115)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgb(3,190,147)"; e.currentTarget.style.color = "rgb(3,190,147)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgb(3,128,115)"; e.currentTarget.style.color = "rgb(3,128,115)"; }}
           >
             Подробнее
             <Icon name="ArrowRight" size={14} />
