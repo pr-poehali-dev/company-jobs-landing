@@ -98,26 +98,19 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 font-sans">
       <TopNav />
 
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-2.5">
-          <nav className="flex items-center gap-2" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
-            <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Главная</a>
-            <span className="text-gray-400">—</span>
-            <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Вакансии группы компаний</a>
-          </nav>
-        </div>
-      </div>
-
-      <div className="bg-white border-b border-gray-200 py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Gilroy', sans-serif" }}>
-            Вакансии группы компаний
-          </h1>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 pt-4">
+        <nav className="flex items-center gap-2 mb-4" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
+          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Главная</a>
+          <span className="text-gray-400">—</span>
+          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Вакансии группы компаний</a>
+        </nav>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Gilroy', sans-serif" }}>
+          Вакансии группы компаний
+        </h1>
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex border-b border-brand-gray mt-6">
+        <div className="flex border-b border-brand-gray mt-4">
           <button
             onClick={() => setActiveTab("vacancies")}
             className="flex-1 py-3.5 text-sm transition-colors border-b-2 -mb-px"
