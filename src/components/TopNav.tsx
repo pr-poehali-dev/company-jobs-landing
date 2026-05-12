@@ -31,8 +31,13 @@ export default function TopNav() {
             <a
               key={label}
               href="#"
-              className="text-sm underline text-gray-700 hover:text-gray-900 whitespace-nowrap transition-colors"
-              style={{ fontFamily: "'Gilroy', sans-serif" }}
+              className="underline whitespace-nowrap transition-colors hover:opacity-75"
+              style={{
+                fontFamily: "'Gilroy', sans-serif",
+                fontWeight: 700,
+                fontSize: "9pt",
+                color: label === "HR портал" ? "rgb(3,128,115)" : "rgb(55,65,81)",
+              }}
             >
               {label}
             </a>

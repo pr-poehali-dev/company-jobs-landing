@@ -99,7 +99,7 @@ const Index = () => {
       <TopNav />
 
       <div className="max-w-7xl mx-auto px-6 pt-4">
-        <nav className="flex items-center gap-2 mb-4" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
+        <nav className="flex items-center gap-2 mb-24" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Главная</a>
           <span className="text-gray-400">—</span>
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Вакансии группы компаний</a>
