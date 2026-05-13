@@ -102,7 +102,7 @@ const Index = () => {
         <nav className="flex items-center gap-2 mb-24" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Главная</a>
           <span className="text-gray-400">—</span>
-          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Вакансии группы компаний</a>
+          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Карьера в ГК ТОФС</a>
         </nav>
         <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Gilroy', sans-serif" }}>
           Карьера в ГК ТОФС
