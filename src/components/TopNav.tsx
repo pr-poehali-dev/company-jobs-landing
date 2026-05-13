@@ -1,11 +1,14 @@
-const NAV_LINKS = [
-  "Новости",
-  "Лекции и вебинары",
-  "Опросы",
-  "Политики группы компаний",
-  "Устойчивое развитие",
-  "Медиатека",
-  "HR портал",
+type NavItem = { label: string; active?: boolean };
+
+const NAV_LINKS: NavItem[] = [
+  { label: "Новости" },
+  { label: "Лекции и вебинары" },
+  { label: "Опросы" },
+  { label: "Политики группы компаний" },
+  { label: "Устойчивое развитие" },
+  { label: "Медиатека" },
+  { label: "Карьера в ГК ТОФС", active: true },
+  { label: "HR портал" },
 ];
 
 export default function TopNav() {
@@ -26,17 +29,18 @@ export default function TopNav() {
           </span>
         </div>
 
-        <div className="flex items-center gap-6 flex-wrap justify-end">
-          {NAV_LINKS.map((label) => (
+        <div className="flex items-center gap-6 flex-wrap justify-end h-full">
+          {NAV_LINKS.map(({ label, active }) => (
             <a
               key={label}
               href="#"
-              className="underline whitespace-nowrap transition-colors hover:opacity-75"
+              className="underline whitespace-nowrap transition-colors hover:opacity-75 flex items-center h-full relative"
               style={{
                 fontFamily: "'Gilroy', sans-serif",
                 fontWeight: 700,
                 fontSize: "9pt",
-                color: label === "HR портал" ? "rgb(3,128,115)" : "rgb(55,65,81)",
+                color: active ? "rgb(3,190,147)" : label === "HR портал" ? "rgb(3,128,115)" : "rgb(55,65,81)",
+                boxShadow: active ? "inset 0 -3px 0 rgb(3,190,147)" : "none",
               }}
             >
               {label}

@@ -105,7 +105,7 @@ const Index = () => {
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Вакансии группы компаний</a>
         </nav>
         <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Gilroy', sans-serif" }}>
-          Вакансии группы компаний
+          Карьера в ГК ТОФС
         </h1>
       </div>
 
@@ -122,7 +122,7 @@ const Index = () => {
               color: activeTab === "vacancies" ? "#1a3a2f" : "#6b7280",
             }}
           >
-            Вакансии компании
+            Вакансии группы компаний
           </button>
           <button
             onClick={() => setActiveTab("projects")}
