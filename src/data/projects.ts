@@ -21,7 +21,7 @@ export const PROJECT_CATEGORIES = ["Все", "Экология", "Спорт", "
 export const PROJECT_LOCATIONS = ["Все", "Москва", "Санкт-Петербург", "Казань", "Удалённо", "Все регионы"];
 export const PROJECT_DEPARTMENTS = ["Все", "Финансы", "IT", "HR", "Маркетинг", "Операции", "Юридический", "Общекорпоративный"];
 export const PROJECT_EXPERIENCE_OPTIONS = ["Не имеет значения", "1-3 года", "3-5 лет", "Более 5 лет"];
-export const PROJECT_WORK_FORMAT_OPTIONS = ["Все", "На месте заказчика", "Гибридный", "Дистанционный", "Командировка"];
+export const PROJECT_WORK_FORMAT_OPTIONS = ["Все", "Очный", "Гибридный", "Дистанционный", "Командировка"];
 export const PROJECT_DURATION_OPTIONS = ["Любая", "До 3 месяцев", "3-6 месяцев", "6-12 месяцев", "Более 12 месяцев"];
 
 export const projects: Project[] = [
