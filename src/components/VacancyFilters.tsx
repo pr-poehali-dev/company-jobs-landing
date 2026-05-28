@@ -106,7 +106,7 @@ export default function VacancyFilters({ filters, onChange, total }: Props) {
     });
 
   return (
-    <div className="bg-white border border-brand-gray p-5 mb-8">
+    <div className="bg-white border border-brand-gray p-5 mb-8 flex flex-col gap-3">
       <div className="flex items-end gap-3 w-full">
 
         <MultiSelect
@@ -156,7 +156,10 @@ export default function VacancyFilters({ filters, onChange, total }: Props) {
           </select>
         </div>
 
-        <div className="flex items-center gap-4 pb-0.5 shrink-0">
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-5">
           <label className="flex items-center gap-2 cursor-pointer select-none">
             <div
               onClick={() => set({ onlyNew: !filters.onlyNew })}
@@ -164,7 +167,7 @@ export default function VacancyFilters({ filters, onChange, total }: Props) {
             >
               <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform shadow-sm ${filters.onlyNew ? "translate-x-5" : "translate-x-0.5"}`} />
             </div>
-            <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">Новые</span>
+            <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">Только новые</span>
           </label>
 
           <label className="flex items-center gap-2 cursor-pointer select-none">
@@ -174,23 +177,23 @@ export default function VacancyFilters({ filters, onChange, total }: Props) {
             >
               <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform shadow-sm ${filters.onlyInternal ? "translate-x-5" : "translate-x-0.5"}`} />
             </div>
-            <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">Внутренние</span>
+            <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">Только внутренние</span>
           </label>
         </div>
 
-        <div className="flex items-center gap-3 pb-0.5 shrink-0">
+        <div className="flex items-center gap-3">
           {activeCount > 0 && (
             <button onClick={reset} className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-green-deep transition-colors whitespace-nowrap">
               <Icon name="X" size={14} />
-              Сбросить
+              Сбросить фильтры
             </button>
           )}
           <span className="text-sm font-bold text-brand-green-deep bg-brand-gray px-4 py-1.5 rounded-full font-sans whitespace-nowrap">
             {total} {total === 1 ? "вакансия" : total < 5 ? "вакансии" : "вакансий"}
           </span>
         </div>
-
       </div>
+
     </div>
   );
 }
