@@ -70,7 +70,7 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
         <div className="flex flex-col gap-1 min-w-[160px]">
           <label className={labelClass}>Локация</label>
           <select value={filters.location} onChange={(e) => set({ location: e.target.value })} className={selectClass}>
-            {PROJECT_LOCATIONS.filter((l) => l !== "Удалённо").map((l) => <option key={l}>{l}</option>)}
+            {PROJECT_LOCATIONS.filter((l) => l !== "Удалённо" && l !== "Все регионы").map((l) => <option key={l}>{l}</option>)}
           </select>
         </div>
 
