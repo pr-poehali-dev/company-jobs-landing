@@ -60,17 +60,17 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
           </select>
         </div>
 
-        <div className="flex flex-col gap-1 min-w-[160px]">
-          <label className={labelClass}>Локация</label>
-          <select value={filters.location} onChange={(e) => set({ location: e.target.value })} className={selectClass}>
-            {PROJECT_LOCATIONS.map((l) => <option key={l}>{l}</option>)}
-          </select>
-        </div>
-
         <div className="flex flex-col gap-1 min-w-[190px]">
           <label className={labelClass}>Формат работы</label>
           <select value={filters.workFormat} onChange={(e) => set({ workFormat: e.target.value })} className={selectClass}>
             {PROJECT_WORK_FORMAT_OPTIONS.map((o) => <option key={o}>{o}</option>)}
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1 min-w-[160px]">
+          <label className={labelClass}>Локация</label>
+          <select value={filters.location} onChange={(e) => set({ location: e.target.value })} className={selectClass}>
+            {PROJECT_LOCATIONS.filter((l) => l !== "Удалённо").map((l) => <option key={l}>{l}</option>)}
           </select>
         </div>
 
