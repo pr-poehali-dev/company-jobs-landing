@@ -1,7 +1,5 @@
 import {
-  PROJECT_LOCATIONS,
   PROJECT_DEPARTMENTS,
-  PROJECT_EXPERIENCE_OPTIONS,
   PROJECT_WORK_FORMAT_OPTIONS,
   PROJECT_DURATION_OPTIONS,
 } from "@/data/projects";
@@ -32,9 +30,7 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
 
   const activeCount = [
     filters.department !== "Все",
-    filters.location !== "Все",
     filters.onlyNew,
-    filters.experience !== "Не имеет значения",
     filters.workFormat !== "Все",
     filters.duration !== "Любая",
   ].filter(Boolean).length;
@@ -56,23 +52,9 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
       <div className="flex flex-wrap items-end gap-4">
 
         <div className="flex flex-col gap-1 min-w-[180px]">
-          <label className={labelClass}>Департамент</label>
+          <label className={labelClass}>Направления</label>
           <select value={filters.department} onChange={(e) => set({ department: e.target.value })} className={selectClass}>
             {PROJECT_DEPARTMENTS.map((d) => <option key={d}>{d}</option>)}
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-1 min-w-[160px]">
-          <label className={labelClass}>Локация</label>
-          <select value={filters.location} onChange={(e) => set({ location: e.target.value })} className={selectClass}>
-            {PROJECT_LOCATIONS.map((l) => <option key={l}>{l}</option>)}
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-1 min-w-[200px]">
-          <label className={labelClass}>Требуемый опыт</label>
-          <select value={filters.experience} onChange={(e) => set({ experience: e.target.value })} className={selectClass}>
-            {PROJECT_EXPERIENCE_OPTIONS.map((o) => <option key={o}>{o}</option>)}
           </select>
         </div>
 

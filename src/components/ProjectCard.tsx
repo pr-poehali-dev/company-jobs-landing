@@ -54,10 +54,6 @@ export default function ProjectCard({ project, onOpen }: Props) {
         </h3>
 
         <div className="flex flex-col gap-1.5 mb-4">
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Icon name="MapPin" size={13} />
-            <span>{project.location}</span>
-          </div>
           {project.participants !== undefined && (
             <div className="flex items-center gap-2 text-sm text-gray-500">
               <Icon name="Users" size={13} />

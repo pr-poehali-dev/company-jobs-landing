@@ -71,8 +71,6 @@ const Index = () => {
     if (!projectFilters.showArchived) list = list.filter((p) => !p.isArchived);
     else list = list.filter((p) => p.isArchived);
     if (projectFilters.department !== "Все") list = list.filter((p) => p.department === projectFilters.department);
-    if (projectFilters.location !== "Все") list = list.filter((p) => p.location === projectFilters.location);
-    if (projectFilters.experience !== "Не имеет значения") list = list.filter((p) => p.experience === projectFilters.experience);
     if (projectFilters.workFormat !== "Все") list = list.filter((p) => p.workFormat === projectFilters.workFormat);
     if (projectFilters.duration !== "Любая") list = list.filter((p) => p.duration === projectFilters.duration);
     if (projectFilters.onlyNew) list = list.filter((p) => daysSince(p.addedDate) <= 7);
