@@ -11,24 +11,23 @@ import TopNav from "@/components/TopNav";
 import Icon from "@/components/ui/icon";
 
 const defaultVacancyFilters: Filters = {
-  department: "Все",
-  location: "Все",
+  department: [],
+  location: [],
   sortBy: "date_desc",
   onlyInternal: false,
   onlyNew: false,
-  experience: "Любой",
-  workFormat: "Любой",
-  employmentType: "Любой",
+  experience: [],
+  workFormat: [],
+  employmentType: [],
 };
 
 const defaultProjectFilters: ProjectFilters = {
-  department: "Все",
-  location: "Все",
+  department: [],
+  location: [],
   sortBy: "date_desc",
   onlyNew: false,
-  experience: "Не имеет значения",
-  workFormat: "Все",
-  duration: "Любая",
+  workFormat: [],
+  duration: [],
   showArchived: false,
 };
 
@@ -51,11 +50,11 @@ const Index = () => {
 
   const filteredVacancies = useMemo(() => {
     let list = [...vacancies];
-    if (vacancyFilters.department !== "Все") list = list.filter((v) => v.department === vacancyFilters.department);
-    if (vacancyFilters.location !== "Все") list = list.filter((v) => v.location === vacancyFilters.location);
-    if (vacancyFilters.experience !== "Любой") list = list.filter((v) => v.experience === vacancyFilters.experience);
-    if (vacancyFilters.workFormat !== "Любой") list = list.filter((v) => v.workFormat === vacancyFilters.workFormat);
-    if (vacancyFilters.employmentType !== "Любой") list = list.filter((v) => v.employmentType === vacancyFilters.employmentType);
+    if (vacancyFilters.department.length > 0) list = list.filter((v) => vacancyFilters.department.includes(v.department));
+    if (vacancyFilters.location.length > 0) list = list.filter((v) => vacancyFilters.location.includes(v.location));
+    if (vacancyFilters.experience.length > 0) list = list.filter((v) => vacancyFilters.experience.includes(v.experience));
+    if (vacancyFilters.workFormat.length > 0) list = list.filter((v) => vacancyFilters.workFormat.includes(v.workFormat));
+    if (vacancyFilters.employmentType.length > 0) list = list.filter((v) => vacancyFilters.employmentType.includes(v.employmentType));
     if (vacancyFilters.onlyNew) list = list.filter((v) => daysSince(v.addedDate) <= 7);
     if (vacancyFilters.onlyInternal) list = list.filter((v) => v.isInternal);
     list.sort((a, b) => {
@@ -70,10 +69,10 @@ const Index = () => {
     let list = [...projects];
     if (!projectFilters.showArchived) list = list.filter((p) => !p.isArchived);
     else list = list.filter((p) => p.isArchived);
-    if (projectFilters.department !== "Все") list = list.filter((p) => p.department === projectFilters.department);
-    if (projectFilters.location !== "Все") list = list.filter((p) => p.location === projectFilters.location);
-    if (projectFilters.workFormat !== "Все") list = list.filter((p) => p.workFormat === projectFilters.workFormat);
-    if (projectFilters.duration !== "Любая") list = list.filter((p) => p.duration === projectFilters.duration);
+    if (projectFilters.department.length > 0) list = list.filter((p) => projectFilters.department.includes(p.department));
+    if (projectFilters.location.length > 0) list = list.filter((p) => projectFilters.location.includes(p.location));
+    if (projectFilters.workFormat.length > 0) list = list.filter((p) => projectFilters.workFormat.includes(p.workFormat));
+    if (projectFilters.duration.length > 0) list = list.filter((p) => projectFilters.duration.includes(p.duration));
     if (projectFilters.onlyNew) list = list.filter((p) => daysSince(p.addedDate) <= 7);
     list.sort((a, b) => {
       const da = new Date(a.addedDate).getTime();

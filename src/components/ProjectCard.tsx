@@ -41,6 +41,11 @@ export default function ProjectCard({ project, onOpen }: Props) {
               В архиве
             </span>
           )}
+          {project.id === 2 && (
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-600 text-sm font-bold shrink-0" title="Грант / финансирование">
+              ₽
+            </span>
+          )}
           <span
             className="ml-auto text-xs font-medium text-gray-600 px-2.5 py-1 rounded-full shrink-0"
             style={{ backgroundColor: "rgb(217,217,217)" }}
