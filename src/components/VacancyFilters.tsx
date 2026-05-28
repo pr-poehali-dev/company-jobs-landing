@@ -118,7 +118,7 @@ export default function VacancyFilters({ filters, onChange, total }: Props) {
 
         <MultiSelect
           label="Локация"
-          options={LOCATIONS.filter((l) => l !== "Все")}
+          options={LOCATIONS.filter((l) => l !== "Все" && l !== "Удалённо")}
           selected={filters.location}
           onChange={(v) => set({ location: v })}
         />
