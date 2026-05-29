@@ -179,9 +179,12 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
       </div>
 
       <div className="px-8 py-5 border-t border-brand-gray bg-white sticky bottom-0">
-        <p className="text-xs text-gray-500 mb-3 leading-relaxed">
-          Отправьте резюме и сопроводительное письмо на адрес:
-        </p>
+        <div className="flex items-start gap-3 bg-brand-blue/10 border border-brand-blue px-4 py-3 mb-4">
+          <Icon name="Info" size={16} className="text-brand-blue shrink-0 mt-0.5" />
+          <p className="text-xs text-brand-blue leading-relaxed">
+            Направляя резюме, обязательно проинформируйте непосредственного руководителя о Вашем решении участвовать в отборе на данную вакансию. Ваш руководитель в любом случае получит уведомление о Вашем отклике от рекрутера.
+          </p>
+        </div>
         <div className="flex gap-3">
           <a
             href={`mailto:${vacancy.contactEmail}?subject=Отклик на вакансию: ${vacancy.title}`}
