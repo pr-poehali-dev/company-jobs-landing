@@ -179,9 +179,9 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
       </div>
 
       <div className="px-8 py-5 border-t border-brand-gray bg-white sticky bottom-0">
-        <div className="flex items-start gap-3 bg-brand-blue/10 border border-brand-blue px-4 py-3 mb-4">
-          <Icon name="Info" size={16} className="text-brand-blue shrink-0 mt-0.5" />
-          <p className="text-xs text-brand-blue leading-relaxed">
+        <div className="flex items-start gap-3 bg-amber-50 border-l-4 border-amber-400 px-4 py-3 mb-4">
+          <Icon name="TriangleAlert" size={16} className="text-amber-500 shrink-0 mt-0.5" />
+          <p className="text-xs text-amber-900 leading-relaxed">
             Направляя резюме, обязательно проинформируйте непосредственного руководителя о Вашем решении участвовать в отборе на данную вакансию. Ваш руководитель в любом случае получит уведомление о Вашем отклике от рекрутера.
           </p>
         </div>
