@@ -141,6 +141,13 @@ const Index = () => {
       <main className="max-w-7xl mx-auto px-6 py-10">
         {activeTab === "vacancies" && (
           <>
+            <div className="flex items-start gap-4 bg-amber-50 border-l-4 border-amber-400 px-5 py-4 mb-6">
+              <Icon name="TriangleAlert" size={20} className="text-amber-500 shrink-0 mt-0.5" />
+              <p className="text-sm text-amber-900 leading-relaxed">
+                Сотрудники компании допускаются к участию в отборе на вакансии только при условии, что они отработали на текущем месте работы{" "}
+                <span className="font-bold" style={{ fontFamily: "'Gilroy', sans-serif" }}>не менее 2 лет</span>.
+              </p>
+            </div>
             <VacancyFilters filters={vacancyFilters} onChange={setVacancyFilters} total={filteredVacancies.length} />
             {filteredVacancies.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-24 text-center">
