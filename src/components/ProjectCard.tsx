@@ -54,18 +54,12 @@ export default function ProjectCard({ project, onOpen }: Props) {
           </span>
         </div>
 
-        <h3 className="text-[15px] font-semibold text-brand-green-deep leading-snug mb-3 group-hover:text-brand-green transition-colors">
+        <h3 className="text-[15px] font-semibold text-brand-green-deep leading-snug mb-1 group-hover:text-brand-green transition-colors">
           {project.title}
         </h3>
-
-        <div className="flex flex-col gap-1.5 mb-4">
-          {project.participants !== undefined && (
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-              <Icon name="Users" size={13} />
-              <span>{project.participants} участников</span>
-            </div>
-          )}
-        </div>
+        <p className="text-xs mb-4" style={{ color: "rgb(217,217,217)" }}>
+          Дата добавления: {new Date(project.addedDate).toLocaleDateString("ru-RU")}
+        </p>
 
         <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-5 flex-1">
           {project.description}

@@ -93,35 +93,17 @@ function DrawerContent({ project, onClose }: { project: Project; onClose: () => 
           <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">
             {project.category}
           </p>
-          <h2 className="text-2xl font-bold text-brand-green-deep leading-snug mb-6">
+          <h2 className="text-2xl font-bold text-brand-green-deep leading-snug mb-1">
             {project.title}
           </h2>
+          <p className="text-xs mb-6" style={{ color: "rgb(217,217,217)" }}>
+            Дата добавления: {new Date(project.addedDate).toLocaleDateString("ru-RU")}
+          </p>
 
-          <div className="grid grid-cols-2 gap-3 mb-7">
-            <div className="bg-gray-50 border border-brand-gray px-4 py-3">
-              <p className="text-xs text-gray-400 mb-0.5">Локация</p>
-              <div className="flex items-center gap-1.5">
-                <Icon name="MapPin" size={13} className="text-brand-green" />
-                <p className="text-sm font-semibold text-brand-green-deep">{project.location}</p>
-              </div>
-            </div>
-            {project.participants !== undefined && (
-              <div className="bg-gray-50 border border-brand-gray px-4 py-3">
-                <p className="text-xs text-gray-400 mb-0.5">Участников</p>
-                <div className="flex items-center gap-1.5">
-                  <Icon name="Users" size={13} className="text-brand-green" />
-                  <p className="text-sm font-semibold text-brand-green-deep">{project.participants}</p>
-                </div>
-              </div>
-            )}
-            <div className="bg-gray-50 border border-brand-gray px-4 py-3">
-              <p className="text-xs text-gray-400 mb-0.5">Добавлено</p>
-              <div className="flex items-center gap-1.5">
-                <Icon name="Calendar" size={13} className="text-brand-green" />
-                <p className="text-sm font-semibold text-brand-green-deep font-mono">
-                  {new Date(project.addedDate).toLocaleDateString("ru-RU")}
-                </p>
-              </div>
+          <div className="mb-7">
+            <div className="bg-gray-50 border border-brand-gray px-4 py-3 inline-flex items-center gap-1.5">
+              <Icon name="MapPin" size={13} className="text-brand-green" />
+              <p className="text-sm font-semibold text-brand-green-deep">{project.location}</p>
             </div>
           </div>
 
