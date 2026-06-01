@@ -62,12 +62,7 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
             <Icon name="Monitor" size={13} />
             <span>{vacancy.format}</span>
           </div>
-          {vacancy.salary && (
-            <div className="flex items-center gap-2 text-sm font-medium text-brand-green-deep">
-              <Icon name="Banknote" size={13} />
-              <span>{vacancy.salary}</span>
-            </div>
-          )}
+
         </div>
 
         <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-5 flex-1">
