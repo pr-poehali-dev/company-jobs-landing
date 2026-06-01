@@ -107,35 +107,22 @@ function DrawerContent({ project, onClose }: { project: Project; onClose: () => 
             </div>
           </div>
 
-          <div className="mb-7">
+          <div className="mb-8">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
               <span className="w-4 h-0.5 bg-brand-green inline-block" />
               О проекте
             </h3>
-            <p className="text-sm text-gray-700 leading-relaxed">{project.description}</p>
-          </div>
-
-          <div className="mb-7">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span className="w-4 h-0.5 bg-brand-green inline-block" />
-              Цели проекта
-            </h3>
-            <ul className="space-y-2.5">
-              {project.goals.map((g, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-green flex-shrink-0" />
-                  {g}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mb-8">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span className="w-4 h-0.5 bg-brand-green inline-block" />
-              Как присоединиться
-            </h3>
-            <p className="text-sm text-gray-700 leading-relaxed">{project.howToJoin}</p>
+            <p className="text-sm text-gray-700 leading-relaxed mb-4">{project.description}</p>
+            {project.goals && project.goals.length > 0 && (
+              <ul className="space-y-2.5">
+                {project.goals.map((g, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-green flex-shrink-0" />
+                    {g}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
