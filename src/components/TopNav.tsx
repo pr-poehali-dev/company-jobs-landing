@@ -7,7 +7,7 @@ const NAV_LINKS: NavItem[] = [
   { label: "Политики группы компаний" },
   { label: "Устойчивое развитие" },
   { label: "Медиатека" },
-  { label: "Карьера в ГК ТОФС", active: true },
+  { label: "Расти в ТОФС", active: true },
   { label: "HR портал" },
 ];
 

@@ -100,11 +100,14 @@ const Index = () => {
         <nav className="flex items-center gap-2 mb-24" style={{ fontFamily: "'Gilroy', sans-serif", fontSize: "9pt" }}>
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Главная</a>
           <span className="text-gray-400">—</span>
-          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Карьера в ГК ТОФС</a>
+          <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Расти в ТОФС</a>
         </nav>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Gilroy', sans-serif" }}>
-          Карьера в ГК ТОФС
-        </h1>
+        <div className="flex items-center gap-4 mb-2">
+          <img src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/f8c1e41e-10e7-459c-9686-792457b4e788.png" alt="" className="w-12 h-12 object-contain shrink-0" />
+          <h1 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Gilroy', sans-serif" }}>
+            Расти в ТОФС
+          </h1>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -141,9 +144,9 @@ const Index = () => {
       <main className="max-w-7xl mx-auto px-6 py-10">
         {activeTab === "vacancies" && (
           <>
-            <div className="flex items-start gap-4 bg-amber-50 border-l-4 border-amber-400 px-5 py-4 mb-6">
-              <Icon name="TriangleAlert" size={20} className="text-amber-500 shrink-0 mt-0.5" />
-              <p className="text-sm text-amber-900 leading-relaxed">
+            <div className="flex items-start gap-4 bg-blue-50 border-l-4 border-brand-blue px-5 py-4 mb-6">
+              <Icon name="Info" size={20} className="text-brand-blue shrink-0 mt-0.5" />
+              <p className="text-sm leading-relaxed" style={{ color: "rgb(0,80,140)" }}>
                 Сотрудники компании допускаются к участию в отборе на вакансии только при условии, что они отработали в текущей должности{" "}
                 <span className="font-bold" style={{ fontFamily: "'Gilroy', sans-serif" }}>не менее 2 лет</span>.
               </p>
