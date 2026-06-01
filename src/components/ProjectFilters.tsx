@@ -166,15 +166,7 @@ export default function ProjectFiltersPanel({ filters, onChange, total }: Props)
             <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">Только новые</span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer select-none">
-            <div
-              onClick={() => set({ showArchived: !filters.showArchived })}
-              className={`w-10 h-5 relative rounded-full transition-colors cursor-pointer ${filters.showArchived ? "bg-brand-green" : "bg-brand-gray"}`}
-            >
-              <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform shadow-sm ${filters.showArchived ? "translate-x-5" : "translate-x-0.5"}`} />
-            </div>
-            <span className="text-sm text-brand-green-deep font-medium whitespace-nowrap">В архиве</span>
-          </label>
+
         </div>
 
         <div className="flex items-center gap-3">
