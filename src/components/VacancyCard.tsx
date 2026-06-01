@@ -17,7 +17,7 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
   const isNew = days <= 7;
 
   return (
-    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg">
+    <div className="group bg-white border border-brand-gray hover:border-brand-green transition-all duration-200 flex flex-col h-full hover:shadow-lg rounded-xl overflow-hidden">
       {vacancy.image && (
         <div className="h-44 overflow-hidden">
           <img
