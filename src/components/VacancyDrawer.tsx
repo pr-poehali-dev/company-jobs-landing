@@ -99,9 +99,12 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
           <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">
             {vacancy.department}
           </p>
-          <h2 className="text-2xl font-bold text-brand-green-deep leading-snug mb-6">
+          <h2 className="text-2xl font-bold text-brand-green-deep leading-snug mb-1">
             {vacancy.title}
           </h2>
+          <p className="text-xs text-gray-400 mb-6">
+            Дата добавления: {new Date(vacancy.addedDate).toLocaleDateString("ru-RU")}
+          </p>
 
           <div className="grid grid-cols-2 gap-3 mb-7">
             <div className="bg-gray-50 border border-brand-gray px-4 py-3">
@@ -116,24 +119,6 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
               <div className="flex items-center gap-1.5">
                 <Icon name="Monitor" size={13} className="text-brand-green" />
                 <p className="text-sm font-semibold text-brand-green-deep">{vacancy.format}</p>
-              </div>
-            </div>
-            {vacancy.salary && (
-              <div className="bg-gray-50 border border-brand-gray px-4 py-3">
-                <p className="text-xs text-gray-400 mb-0.5">Вознаграждение</p>
-                <div className="flex items-center gap-1.5">
-                  <Icon name="Banknote" size={13} className="text-brand-green" />
-                  <p className="text-sm font-semibold text-brand-green-deep">{vacancy.salary}</p>
-                </div>
-              </div>
-            )}
-            <div className="bg-gray-50 border border-brand-gray px-4 py-3">
-              <p className="text-xs text-gray-400 mb-0.5">Добавлено</p>
-              <div className="flex items-center gap-1.5">
-                <Icon name="Calendar" size={13} className="text-brand-green" />
-                <p className="text-sm font-semibold text-brand-green-deep font-mono">
-                  {new Date(vacancy.addedDate).toLocaleDateString("ru-RU")}
-                </p>
               </div>
             </div>
           </div>
@@ -187,20 +172,20 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
         </div>
         <div className="flex gap-3">
           <a
-            href={`mailto:${vacancy.contactEmail}?subject=Отклик на вакансию: ${vacancy.title}`}
+            href={`mailto:${vacancy.contactEmail}?subject=Отклик: ${vacancy.title}`}
             className="flex-1 flex items-center justify-center gap-2 bg-brand-green text-white font-bold text-sm py-3 px-4 hover:bg-brand-green-dark transition-colors"
           >
             <Icon name="Mail" size={16} />
-            Отправить резюме
+            Откликнуться
           </a>
-          <button
-            onClick={onClose}
-            className="px-5 py-3 border border-brand-gray text-sm font-semibold text-gray-600 hover:border-brand-green-deep hover:text-brand-green-deep transition-colors"
+          <a
+            href={`mailto:${vacancy.contactEmail}?subject=Рекомендация: ${vacancy.title}`}
+            className="flex-1 flex items-center justify-center gap-2 border border-brand-green text-brand-green-deep font-bold text-sm py-3 px-4 hover:bg-brand-gray transition-colors"
           >
-            Закрыть
-          </button>
+            <Icon name="UserPlus" size={16} />
+            Рекомендовать кандидата
+          </a>
         </div>
-        <p className="text-center text-xs text-gray-400 font-mono mt-2">{vacancy.contactEmail}</p>
       </div>
     </>
   );
