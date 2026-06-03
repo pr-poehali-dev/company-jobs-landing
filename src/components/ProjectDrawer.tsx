@@ -136,12 +136,6 @@ function DrawerContent({ project, onClose }: { project: Project; onClose: () => 
             <Icon name="Mail" size={16} />
             Присоединиться к проекту
           </a>
-          <button
-            onClick={onClose}
-            className="px-5 py-3 border border-brand-gray text-sm font-semibold text-gray-600 hover:border-brand-green-deep hover:text-brand-green-deep transition-colors"
-          >
-            Закрыть
-          </button>
         </div>
         <p className="text-center text-xs text-gray-400 font-mono mt-2">{project.contactEmail}</p>
       </div>
