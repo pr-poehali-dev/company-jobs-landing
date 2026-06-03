@@ -82,6 +82,7 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
             </span>
           )}
         </div>
+
       </div>
 
       <div className="flex-1 overflow-y-auto">
@@ -96,15 +97,13 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
         )}
 
         <div className="px-8 pt-7 pb-4">
-          <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2">
-            {vacancy.department}
-          </p>
           <h2 className="text-2xl font-bold text-brand-green-deep leading-snug mb-1">
             {vacancy.title}
           </h2>
-          <p className="text-xs text-gray-400 mb-6">
+          <p className="text-xs text-gray-400 mb-4">
             Дата добавления: {new Date(vacancy.addedDate).toLocaleDateString("ru-RU")}
           </p>
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">{vacancy.department}</p>
 
           <div className="grid grid-cols-2 gap-3 mb-7">
             <div className="bg-gray-50 border border-brand-gray px-4 py-3">

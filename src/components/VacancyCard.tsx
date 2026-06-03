@@ -36,22 +36,18 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
             </span>
           )}
           {vacancy.isInternal && (
-            <span className="inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider shrink-0">
+            <span className="ml-auto inline-flex items-center gap-1 border border-brand-blue text-brand-blue text-xs font-semibold px-2.5 py-1 uppercase tracking-wider shrink-0">
               <Icon name="Lock" size={11} />
               Только внутренний отбор
             </span>
           )}
-          <span
-            className="ml-auto text-xs font-medium text-gray-600 px-2.5 py-1 rounded-full shrink-0"
-            style={{ backgroundColor: "rgb(217,217,217)" }}
-          >
-            {vacancy.department}
-          </span>
         </div>
 
         <h3 className="text-[15px] font-semibold text-brand-green-deep leading-snug mb-3 group-hover:text-brand-green transition-colors">
           {vacancy.title}
         </h3>
+
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">{vacancy.department}</p>
 
         <div className="flex flex-col gap-1.5 mb-4">
           <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -62,7 +58,6 @@ export default function VacancyCard({ vacancy, onOpen }: Props) {
             <Icon name="Monitor" size={13} />
             <span>{vacancy.format}</span>
           </div>
-
         </div>
 
         <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-5 flex-1">
