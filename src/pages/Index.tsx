@@ -102,12 +102,9 @@ const Index = () => {
           <span className="text-gray-400">—</span>
           <a href="#" className="underline transition-colors" style={{ color: "rgb(3,128,115)" }}>Расти в ТОФС</a>
         </nav>
-        <div className="flex items-center gap-4 mb-2">
-          <img src="https://cdn.poehali.dev/projects/7a8c2455-9630-4268-a8fb-59f94fd876e1/bucket/f8c1e41e-10e7-459c-9686-792457b4e788.png" alt="" className="w-12 h-12 object-contain shrink-0" />
-          <h1 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Gilroy', sans-serif" }}>
-            Расти в ТОФС
-          </h1>
-        </div>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Gilroy', sans-serif" }}>
+          Расти в ТОФС
+        </h1>
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
