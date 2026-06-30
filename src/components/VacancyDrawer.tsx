@@ -120,6 +120,20 @@ function DrawerContent({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => 
                 <p className="text-sm font-semibold text-brand-green-deep">{vacancy.format}</p>
               </div>
             </div>
+            <div className="bg-gray-50 border border-brand-gray px-4 py-3">
+              <p className="text-xs text-gray-400 mb-0.5">Опыт работы</p>
+              <div className="flex items-center gap-1.5">
+                <Icon name="BriefcaseBusiness" size={13} className="text-brand-green" />
+                <p className="text-sm font-semibold text-brand-green-deep">{vacancy.experience}</p>
+              </div>
+            </div>
+            <div className="bg-gray-50 border border-brand-gray px-4 py-3">
+              <p className="text-xs text-gray-400 mb-0.5">Тип занятости</p>
+              <div className="flex items-center gap-1.5">
+                <Icon name="Clock" size={13} className="text-brand-green" />
+                <p className="text-sm font-semibold text-brand-green-deep">{vacancy.employmentType}</p>
+              </div>
+            </div>
           </div>
 
           <div className="mb-7">
