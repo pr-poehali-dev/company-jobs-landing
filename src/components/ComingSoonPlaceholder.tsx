@@ -51,7 +51,7 @@ export default function ComingSoonPlaceholder() {
           className="text-xl sm:text-2xl font-bold text-brand-green-deep mb-2"
           style={{ fontFamily: "'Gilroy', sans-serif" }}
         >
-          Скоро здесь будут опубликованы проекты компании
+          Скоро здесь будут опубликованы проекты группы компаний
         </h3>
         <p className="text-sm text-gray-500 max-w-md">
           Мы готовим раздел с внутренними проектами, к которым можно будет присоединиться. Загляните позже.
