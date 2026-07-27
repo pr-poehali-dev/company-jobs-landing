@@ -9,6 +9,7 @@ import ProjectFiltersPanel, { ProjectFilters } from "@/components/ProjectFilters
 import ProjectDrawer from "@/components/ProjectDrawer";
 import TopNav from "@/components/TopNav";
 import Icon from "@/components/ui/icon";
+import ComingSoonPlaceholder from "@/components/ComingSoonPlaceholder";
 
 const defaultVacancyFilters: Filters = {
   department: [],
@@ -173,32 +174,7 @@ const Index = () => {
           </>
         )}
 
-        {activeTab === "projects" && (
-          <>
-            <ProjectFiltersPanel filters={projectFilters} onChange={setProjectFilters} total={filteredProjects.length} />
-            {filteredProjects.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="w-14 h-14 bg-brand-gray flex items-center justify-center mb-4">
-                  <Icon name="SearchX" size={24} className="text-gray-400" />
-                </div>
-                <p className="text-lg font-bold text-brand-green-deep mb-2">Проектов не найдено</p>
-                <p className="text-sm text-gray-500 mb-5">Попробуйте изменить условия фильтрации</p>
-                <button
-                  onClick={() => setProjectFilters(defaultProjectFilters)}
-                  className="text-sm text-brand-green hover:underline font-semibold"
-                >
-                  Сбросить все фильтры
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {filteredProjects.map((p) => (
-                  <ProjectCard key={p.id} project={p} onOpen={handleOpenProject} />
-                ))}
-              </div>
-            )}
-          </>
-        )}
+        {activeTab === "projects" && <ComingSoonPlaceholder />}
       </main>
 
       <footer className="border-t border-brand-gray bg-white mt-16">
